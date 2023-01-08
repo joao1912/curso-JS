@@ -1,9 +1,13 @@
-const pessoa = {
-    nome: "daniel",
-    idade: 17,
-    profissão: "medico",
-}
+const pessoas = [{
+    nome: "beto", idade: 30
+}, {
+    nome: "Barbara", idade: 22
+}, {
+    nome: "joao", idade: 18
+}, {
+    nome: "nilson", idade: 48
+}]
 
-for(let prop in pessoa) {
-    console.log(pessoa[prop])
+for(let c = 0 ; c < pessoas.length ; c++) {
+    console.log(`O funcionario ${pessoas[c].nome} tem ${pessoas[c].idade} de idade.`)
 }
