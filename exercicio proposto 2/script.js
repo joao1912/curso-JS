@@ -1,17 +1,16 @@
 "use strict"
-let numero1 = prompt("digite o primeiro numero")
-let numero2 = prompt("digite o segundo numero")
 
-document.getElementById("resposta").innerHTML = `<p>${calculador(numero1,numero2)}</p>`
-function calculador(v1 = 0,v2 = 0) {
-    if(v1 * 0 != 0 || v2 * 0 != 0) {
-        alert("erro")
+console.log(calculador(2,6))
+
+function calculador() {
+    let soma = 0
+    for (let c = 0 ; c < arguments.length ; c++){
+        soma += arguments[c]
+    }
+    if(typeof soma != "number") {
         return "erro"
     } else {
-        let valor1 = Number(v1)
-        let valor2 = Number(v2)
-        let media = (valor1 + valor2) / 2
-        return media
+        return soma / arguments.length
     }
 }
 
