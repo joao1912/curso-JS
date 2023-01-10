@@ -1,13 +1,12 @@
-const pessoas = [{
-    nome: "beto", idade: 30
-}, {
-    nome: "Barbara", idade: 22
-}, {
-    nome: "joao", idade: 18
-}, {
-    nome: "nilson", idade: 48
-}]
-
-for(let c = 0 ; c < pessoas.length ; c++) {
-    console.log(`O funcionario ${pessoas[c].nome} tem ${pessoas[c].idade} de idade.`)
+function somar() {
+    let soma = 0
+    console.log(arguments.length)
+    for(let c = 0 ; c < arguments.length ; c++) {
+        soma += arguments[c]
+    }
+    return soma
 }
+
+
+
+console.log(somar(1,2,3))
