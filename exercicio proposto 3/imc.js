@@ -59,7 +59,7 @@
             }
         }
     }
-    
+                                       /*INCOMPLETO*/ 
     calcImc(function(IMC){
         if (IMC >= 16 && IMC <= 16.9) {
             return "Muito Abaixo do Peso"
