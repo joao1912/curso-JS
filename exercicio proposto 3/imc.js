@@ -47,15 +47,19 @@
             if(peso == 0 || altura == 0) {
                 throw Error("Dados Incompletos")
             }
-            imc = peso / (altura**2)
+            if(typeof F !== "function") {
+                return peso / (altura**2)
+            } else {
+                imc = peso / (altura**2)
             if (imc > 80) {
                 throw Error("Valores Irreais")
             } else {
                 console.log(F(imc))
             }
+            }
         }
     }
-
+    
     calcImc(function(IMC){
         if (IMC >= 16 && IMC <= 16.9) {
             return "Muito Abaixo do Peso"
@@ -75,4 +79,6 @@
             throw Error("Erro Inesperado")
         }
     })
+    
 })()
+
