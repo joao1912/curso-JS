@@ -37,13 +37,16 @@
 */
 
 (function(){
-    let peso = 57
-    let altura = 1.65
+    let peso = 0
+    let altura = 0
     function calcImc(F) {
         let imc = 0
         if(typeof altura !== "number" || typeof peso !== "number") {
             throw Error("OnlyNumbers")
         } else {
+            if(peso == 0 || altura == 0) {
+                throw Error("Dados Incompletos")
+            }
             imc = peso / (altura**2)
             if (imc > 80) {
                 throw Error("Valores Irreais")
