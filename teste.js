@@ -1,12 +1,3 @@
-function somar() {
-    let soma = 0
-    console.log(arguments.length)
-    for(let c = 0 ; c < arguments.length ; c++) {
-        soma += arguments[c]
-    }
-    return soma
-}
+const elemento = document.getElementById("paragrafo")
 
-
-
-console.log(somar(1,2,3))
+elemento.parentElement.style.display = "none"
