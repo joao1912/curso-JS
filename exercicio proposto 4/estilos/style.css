@@ -44,6 +44,7 @@ section#cadastro {
     height: 50px;
     padding-top: 18px;
     padding-left: 10px;
+    text-align: center;
 }
 
 input#cadastroEmail {
@@ -62,6 +63,28 @@ input#botaoCadastrar {
 
 input#botaoCadastrar:hover {
     cursor: pointer;
-
     background-color: rgb(185, 184, 184);
+}
+
+input#edit {
+    display: inline-block;
+    display: none;
+}
+
+
+section#edição {
+    text-align:right;
+    padding-right: 5px;
+}
+
+
+input#edit:hover {
+    cursor: pointer;
+    background-color: rgb(185, 184, 184);
+}
+
+section#bem-vindo {
+    padding: 5px;
+    font-size: 0.9em;
+    text-align: center;
 }
