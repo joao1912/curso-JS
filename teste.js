@@ -1,3 +1,13 @@
-const elemento = document.getElementById("paragrafo")
+const nomes = ["Joao", "Roberta", "Carlos", "Cintia", "Jorge"]
 
-elemento.parentElement.style.display = "none"
+let nomesEmOrdem = nomes.reduce(function(nomes,nomeAtual){
+    let primeiraLetra = nomeAtual[0]
+    if(nomes[primeiraLetra]) {
+        nomes[primeiraLetra]++
+    } else {
+        nomes[primeiraLetra] = 1
+    }
+    return nomes
+},{})
+
+console.log(nomesEmOrdem)
