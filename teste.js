@@ -1,13 +1,9 @@
-const nomes = ["Joao", "Roberta", "Carlos", "Cintia", "Jorge"]
+const arr = [1,2,3]
 
-let nomesEmOrdem = nomes.reduce(function(nomes,nomeAtual){
-    let primeiraLetra = nomeAtual[0]
-    if(nomes[primeiraLetra]) {
-        nomes[primeiraLetra]++
-    } else {
-        nomes[primeiraLetra] = 1
-    }
-    return nomes
-},{})
+let arr1 = Array.from(arr)
 
-console.log(nomesEmOrdem)
+arr.push(4)
+console.log(arr1)
+console.log(arr)
+
+
