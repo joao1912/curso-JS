@@ -1,4 +1,7 @@
 (function(){
+    const valoresParaSoma = [1,2,3]
+    const valoresParaMedia = [1,2,3]
+
     function sum() {
         let tot = 0
         for(let n of arguments) {
@@ -16,6 +19,6 @@
         return soma / arguments.length
     }
 
-    console.log("soma dos valores:" + sum(1,2,3))
-    console.log("média dos valores:" + avarege(1,2,3))
+    console.log("soma dos valores:" + sum(...valoresParaSoma))
+    console.log("média dos valores:" + avarege(...valoresParaMedia))
 })()
