@@ -5,7 +5,7 @@
     const soma = function(){
         let somaNotas = 0
         cont++
-        
+        /*PROSEGUIR AQUI*/ /* qual loop usar */
     }
 
     function avarege(cb) {
