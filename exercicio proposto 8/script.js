@@ -1,11 +1,19 @@
 (function(){
-    let notasAlunos = Array.from(document.querySelectorAll('nota'))
+    let mediasAlunos = document.querySelectorAll("textMedia")
+    let notasAlunos = document.querySelectorAll('.nota')
+    notasAlunos = Array.from(notasAlunos)
     let medias = []
     let cont = 0
-    const soma = function(){
-        let somaNotas = 0
-        cont++
-        /*PROSEGUIR AQUI*/ /* qual loop usar */
+
+
+
+    const soma = function(nota){
+        if(cont === 5) {
+            return
+        }
+        cont++ 
+        return nota
+
     }
 
     function avarege(cb) {
@@ -14,11 +22,16 @@
         }
         let soma = 0
         for(let nota of notasAlunos){
-            soma = cb()
-            return soma / 4
+            soma += cb(nota)
+            if(cont === 5) {
+                cont = 0
+                return soma / 4
+            }
         }
+        
     }
-
-    
-    console.log()
+    for(let c = 0 ; c < 10 ; c++) {
+        medias.push(avarege(soma))
+    }
+    console.log(medias)
 })()
