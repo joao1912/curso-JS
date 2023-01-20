@@ -36,6 +36,14 @@ const alunos = [
 
     document.querySelector('tbody').innerHTML = html
 
+    alunos.forEach(aluno => {
+        if(aluno.media <= 6.9) {
+            document.querySelector("td").style.background = "red"
+        } else {
+            document.querySelector("td").style.background = "green"
+        }
+    })
+
 })()
 
 /*
