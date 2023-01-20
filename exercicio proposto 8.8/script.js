@@ -30,19 +30,12 @@ const alunos = [
         <tr>
             <td>${aluno.nome}</td>
             ${aluno.notas.map(n => `<td>${n}</td>`).join("")}
-            <td>${aluno.media}</td>
+            <td class="${aluno.media > 6.9 ? "aprovado" : "reprovado"}">${aluno.media}</td>
         </tr>
     `).join("")
 
     document.querySelector('tbody').innerHTML = html
 
-    alunos.forEach(aluno => {
-        if(aluno.media <= 6.9) {
-            document.querySelector("td").style.background = "red"
-        } else {
-            document.querySelector("td").style.background = "green"
-        }
-    })
 
 })()
 
