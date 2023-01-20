@@ -14,42 +14,10 @@ const alunos = [
     
 
 (function(){
-    let mediasAlunos = document.querySelectorAll(".textMedia")
-    let notasAlunos = document.querySelectorAll('.nota')
-    let notasAlunos_ = []
-    let medias = []
-    for(let c = 0 ; c < notasAlunos.length ; c++) {
-        notasAlunos_.push(Number(notasAlunos[c].textContent))
-    }
 
-
-    const soma = function(){
-        let notas = []
-        let tot = 0
-        notas = notasAlunos_.splice(0,4)
-        for(let nota of notas) {
-            
-            tot += nota
-        }
-        return tot
-    }
-
-    function avarege(cb,n1,n2,n3,n4) {
-        if(typeof cb != "function") {
-
-            let media = (n1 + n2 + n3 + n4) / 4
-            return media
-        }
-        let soma = 0
-        for(let c = 0 ; c < 10 ; c++){
-            soma = cb()
-            return soma / 4
-        }
-        
-    }
-    for(let c = 0 ; c < 10 ; c++) {
-        medias.push(avarege(soma).toFixed(1))
-        mediasAlunos[c].textContent = medias[c]
+    function avarege(n1,n2,n3,n4) {
+        let media = (n1 + n2 + n3 + n4) / 4
+        return media.toFixed(1)
     }
 
 
@@ -57,9 +25,8 @@ const alunos = [
         aluno.media = avarege(aluno.n1, aluno.n2, aluno.n3, aluno.n4)
     })
 
-    const html = alunos.map(function(aluno){
-        for(let c = 0 ; c < 10 ; c++) {
-        `
+    const html = alunos.map(aluno => `
+        
         <tr>
             <td>${aluno.nome}</td>
             <td>${aluno.n1}</td>
@@ -68,9 +35,8 @@ const alunos = [
             <td>${aluno.n4}</td>
             <td>${aluno.media}</td>
         </tr>
-        `
-        }
-    }).join("")
-
-
+        
+    `).join("")
+    document.querySelector('tbody').innerHTML = html
+    
 })()
