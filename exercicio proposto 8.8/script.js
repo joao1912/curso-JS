@@ -29,10 +29,7 @@ const alunos = [
     const html = alunos.map(aluno => `
         <tr>
             <td>${aluno.nome}</td>
-            <td>${aluno.notas[0]}</td>
-            <td>${aluno.notas[1]}</td>
-            <td>${aluno.notas[2]}</td>
-            <td>${aluno.notas[3]}</td>
+            ${aluno.notas.map(n => `<td>${n}</td>`).join("")}
             <td>${aluno.media}</td>
         </tr>
     `).join("")
