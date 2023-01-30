@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body,html {
+    background-color: blanchedalmond;
+    position: relative,
+}
+
+main {
+    background-color: aliceblue;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.285);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.195);
+    transform: translate(-50%,-50%);
+}
+
+main > h1 {
+    text-align: center;
+    margin: 5px;
+    padding-top: 10px;
+}
+
+main div.conteiner {
+    display: block;
+    margin: 30px;
+    margin-bottom: 8px;
+}
+
+main input#title {
+    display: block;
+    width: 99%;
+    height: 30px;
+    font-size: 1.3em;
+    padding: 2px;
+}
+
+#title:hover {
+    background-color: rgb(246, 246, 246);
+    border-radius: 5px;
+}
+
+main #txtarea {
+    display: block;
+    padding: 10px;
+    width: 94%;
+    font-size: 1em;
+}
+
+#txtarea:hover {
+    border-radius: 5px;
+}
+
+main #validacao {
+    margin-top: 8px;
+}
+
+#validacao:hover {
+    cursor: pointer;
+}
+
+main label#validar {
+    font-size: 0.9em;
+}
+
+#validar:hover {
+    cursor: pointer;
+}
+
+main input#botaoEnviar {
+    margin-right: 30px;
+    float: right;
+    width: 100px;
+    height: 40px;
+    font-size: 1.3em;
+    font-weight: 4800;
+}
+
+#botaoEnviar:hover {
+    cursor: pointer;
+    border-radius: 5px;
+}
