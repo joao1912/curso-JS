@@ -1,9 +1,8 @@
 (function(){
-    document.querySelector("#validacao").addEventListener("click",function(){
-        if(this.checked) {
-            document.querySelector("#botaoEnviar").removeAttribute("disabled","disabled")
-        } else {
-            document.querySelector("#botaoEnviar").setAttribute("disabled","disabled")
-        }
+    const arr = [1, 3, 5, "opa", true]
+    const arr_1 = arr.filter(function( el ){
+        return typeof el === "number"
     })
+    console.log(arr_1)
+
 })()
