@@ -10,18 +10,23 @@
 <body>
     <main>
         <h1>cadastre uma tarefa</h1>
-        <form action="#" method="post">
+        <form action="#" method="get">
             <div class="conteiner">
                 <label for="title">Titulo:</label>
-                <input type="text" name="titulo" id="title" maxlength="29" required>
+                <input type="text" name="titulo" id="title" maxlength="29" >
             </div>
             <div class="conteiner">
                 <label for="txtarea">Descrição da tarefa:</label>
-                <textarea name="txt" id="txtarea" rows="6" maxlength="210" required></textarea>
-                <input type="checkbox" name="confim" id="validacao" > <label for="validacao" id="validar">Comprometo-me a entregar o texto em ordem.</label>
+                <textarea name="txt" id="txtarea" rows="6" maxlength="210"></textarea>
+                <div id="contador" style="display: none;"><span>210</span> caracteres</div>
+                <input type="checkbox" name="confirm" id="validacao" > <label for="validacao" id="validar">Comprometo-me a entregar o texto em ordem.</label>
             </div>
             <input type="submit" value="Enviar" id="botaoEnviar" disabled>
         </form>
+        <div id="feedbackMessage">
+            <p>aa</p>
+            <button><span>X</span></button>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
