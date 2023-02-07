@@ -23,17 +23,24 @@
         }
     })
 
+
     const txtDescricao = document.getElementById("txtarea")
     const contador = document.getElementById("contador")
     const txtContador = contador.firstElementChild
     const caracMaxima = txtDescricao.maxLength
+
+    mostrarNumero(caracMaxima)
     
     contador.removeAttribute("style")
 
     txtDescricao.addEventListener("input",function() {
         let letrasDigitadas = this.value.length
         let letrasSubtraidas = caracMaxima - Number(letrasDigitadas)
-        txtContador.textContent = letrasSubtraidas
+        mostrarNumero(letrasSubtraidas)
     })
+
+    function mostrarNumero(n) {
+        txtContador.textContent = n
+    }
 
 })()
