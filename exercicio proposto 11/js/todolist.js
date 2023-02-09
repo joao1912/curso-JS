@@ -17,13 +17,51 @@
     function generateTaskLi(obj){
         const li = document.createElement("li")
         const p = document.createElement("p")
+        const checkBtn = document.createElement("button")
+        const editBtb = document.createElement("i")
+        const deleteBtn = document.createElement("i")
         li.className = "todo-item"
         p.className = "task-name"
 
         p.textContent = obj.task
+
         
-        li.appendChild(p)
-        addEventLi(li)
+
+        checkBtn.className = "button-check"
+        checkBtn.innerHTML = '<i class="fas fa-check displayNone"></i>'
+        checkBtn.setAttribute("event-type","check")
+
+        li.appendChild(checkBtn)
+        li.appendChild(p) 
+
+        editBtb.className = "fas fa-edit"
+        editBtb.setAttribute("event-type","edit")
+
+        li.appendChild(editBtb)
+
+        const conteinerEdit = document.createElement("div")
+        conteinerEdit.className = "editContainer"
+        const inputEdit = document.createElement("input")
+        inputEdit.setAttribute("type","text")
+        inputEdit.className ="editInput"
+        conteinerEdit.appendChild(inputEdit)
+        const conteinerEditButton = document.createElement("button")
+        conteinerEditButton.className = "editButton"
+        conteinerEditButton.textContent = "Edit"
+        conteinerEditButton.setAttribute("event-type","conteinerEditButton")
+        conteinerEdit.appendChild(conteinerEditButton)
+        const conteinerCancelButton = document.createElement("button")
+        conteinerCancelButton.className = "cancelButton"
+        conteinerCancelButton.textContent = "Cancel"
+        conteinerCancelButton.setAttribute("event-type","conteinerCancelButton")
+        conteinerEdit.appendChild(conteinerCancelButton)
+        deleteBtn.className = "fas fa-trash-alt"
+        deleteBtn.setAttribute("event-type","delete")
+        
+        li.appendChild(conteinerEdit)
+
+        li.appendChild(deleteBtn)
+
         return li
     }
 
@@ -35,17 +73,15 @@
         })
     }
 
-    function addEventLi(li) {
-        li.addEventListener("click",function(){
-            console.log(this)
-        })
-    }
-
     function renderTasks(){
         ul.innerHTML = ""
         arrTasks.forEach(task => {
             ul.appendChild(generateTaskLi(task))
         });
+    }
+
+    function clickedUl(event) {
+        console.log(event.target.getAttribute("event-type"))
     }
 
     todoItemForm.addEventListener("submit",function(event){
@@ -57,6 +93,11 @@
         itemImput.focus()
 
     });
+
+
+
+    ul.addEventListener("click",clickedUl)
+
     renderTasks()
     
 })()
