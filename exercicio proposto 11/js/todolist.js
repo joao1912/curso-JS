@@ -4,7 +4,7 @@
     const todoItemForm = document.getElementById("todo-add")
     const itemImput = document.querySelector("#item-input")
     const ul = document.getElementById("todo-list")
-    //const lis = ul.getElementsByTagName("li")
+    const lis = ul.getElementsByTagName("li")
 
     let arrTasks = [
         {
@@ -80,8 +80,37 @@
         });
     }
 
+    ul.addEventListener("click",clickedUl)
+
     function clickedUl(event) {
-        console.log(event.target.getAttribute("event-type"))
+        const dataAction = event.target.getAttribute("event-type")
+
+        if(!dataAction) return
+
+        let currentLi = event.target
+        
+        while(currentLi.nodeName !== "LI") {
+            currentLi = currentLi.parentElement
+        }
+
+        const currentLiIndex = [...lis].indexOf(currentLi)
+        
+        const actions = {
+            delete: function(){
+                alert("deletar")
+            },
+            edit: function(){
+                alert("editar")
+            },
+            
+            check: function(){
+                alert("check")
+            }   
+        }
+
+        if(actions[dataAction]){
+            actions[dataAction] ()
+        }
     }
 
     todoItemForm.addEventListener("submit",function(event){
@@ -96,7 +125,7 @@
 
 
 
-    ul.addEventListener("click",clickedUl)
+    
 
     renderTasks()
     
