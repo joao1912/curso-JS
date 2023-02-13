@@ -44,6 +44,8 @@
         const inputEdit = document.createElement("input")
         inputEdit.setAttribute("type","text")
         inputEdit.className ="editInput"
+        inputEdit.value = obj.task
+
         conteinerEdit.appendChild(inputEdit)
         const conteinerEditButton = document.createElement("button")
         conteinerEditButton.className = "editButton"
@@ -97,15 +99,35 @@
         
         const actions = {
             delete: function(){
-                alert("deletar")
+                arrTasks.splice(currentLiIndex,1)
+                renderTasks()
             },
+
             edit: function(){
-                alert("editar")
+                ;[...ul.querySelectorAll(".editContainer")].forEach( conteiner => {
+                    conteiner.removeAttribute("style")
+                });
+                currentLi.querySelector(".editInput").focus()
+                const editContainer = currentLi.querySelector(".editContainer")
+                editContainer.style.display = "flex"
             },
             
             check: function(){
-                alert("check")
-            }   
+                
+
+            },
+            conteinerCancelButton: function(){
+                const editContainer = currentLi.querySelector(".editContainer")
+                editContainer.style.display = "none"
+                editContainer.querySelector(".editInput").value = ""
+            },
+
+            conteinerEditButton: function(){
+                const valor = currentLi.querySelector(".editInput").value
+                arrTasks[currentLiIndex].task = valor
+                renderTasks()
+            }
+            
         }
 
         if(actions[dataAction]){
