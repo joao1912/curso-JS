@@ -119,7 +119,7 @@
             conteinerCancelButton: function(){
                 const editContainer = currentLi.querySelector(".editContainer")
                 editContainer.style.display = "none"
-                editContainer.querySelector(".editInput").value = ""
+                currentLi.querySelector(".editInput").value = arrTasks[currentLiIndex].task
             },
 
             conteinerEditButton: function(){
