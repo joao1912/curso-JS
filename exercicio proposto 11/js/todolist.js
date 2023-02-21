@@ -6,13 +6,26 @@
     const ul = document.getElementById("todo-list")
     const lis = ul.getElementsByTagName("li")
 
-    let arrTasks = [
-        {
-            task: "task1",
-            createAt: Date.now(),
-            completed: false
-        }
-    ]
+    let arrTasks = getDataTasks()
+    console.log(arrTasks)
+    function getDataTasks() {
+        let tasksData = localStorage.getItem("tasks")
+        
+        return [
+            {
+                task: "task1",
+                createAt: Date.now(),
+                completed: true
+            }
+        ]
+        
+    }
+    
+    function newDataTasks() {
+        return localStorage.setItem("tasks", JSON.stringify(arrTasks))
+    }
+
+    newDataTasks()
     
     function generateTaskLi(obj){
         const li = document.createElement("li")
@@ -28,7 +41,9 @@
         
 
         checkBtn.className = "button-check"
-        checkBtn.innerHTML = '<i class="fas fa-check displayNone"></i>'
+        checkBtn.innerHTML = `
+            <i class="fas fa-check ${obj.completed ? "" : "displayNone"}" event-type="check"></i>`
+        
         checkBtn.setAttribute("event-type","check")
 
         li.appendChild(checkBtn)
@@ -73,6 +88,7 @@
             createAt: Date.now(),
             completed: false
         })
+        newDataTasks()
     }
 
     function renderTasks(){
@@ -101,6 +117,7 @@
             delete: function(){
                 arrTasks.splice(currentLiIndex,1)
                 renderTasks()
+                newDataTasks()
             },
 
             edit: function(){
@@ -113,8 +130,9 @@
             },
             
             check: function(){
-                
-
+                arrTasks[currentLiIndex].completed = !arrTasks[currentLiIndex].completed
+                renderTasks()
+                newDataTasks()
             },
             conteinerCancelButton: function(){
                 const editContainer = currentLi.querySelector(".editContainer")
@@ -126,6 +144,7 @@
                 const valor = currentLi.querySelector(".editInput").value
                 arrTasks[currentLiIndex].task = valor
                 renderTasks()
+                newDataTasks()
             }
             
         }
