@@ -7,18 +7,32 @@
     const lis = ul.getElementsByTagName("li")
 
     let arrTasks = getDataTasks()
-    console.log(arrTasks)
     function getDataTasks() {
         let tasksData = localStorage.getItem("tasks")
-        
-        return [
-            {
-                task: "task1",
-                createAt: Date.now(),
-                completed: true
+    
+        try {
+            tasksData = JSON.parse(tasksData)
+            if (!tasksData) {
+                return [
+                    {
+                        task: "task1",
+                        createAt: Date.now(),
+                        completed: false
+                    }
+                ]
+            } else {
+                return tasksData
             }
-        ]
-        
+        } catch(e) {
+
+            return [
+                {
+                    task: "task1",
+                    createAt: Date.now(),
+                    completed: false
+                }
+            ]
+        }
     }
     
     function newDataTasks() {
@@ -161,24 +175,8 @@
         renderTasks()
         itemImput.value = ""
         itemImput.focus()
-
     });
-
-
-
-    
 
     renderTasks()
     
 })()
-
-/*
-<li class="todo-item">
-    <button class="button-check">
-        <i class="fas fa-check displayNone"></i>
-    </button>
-    <p class="task-name">Example</p>
-    <i class="fas fa-edit"></i>
-    <i class="fas fa-trash-alt"></i>
-</li>
-*/
