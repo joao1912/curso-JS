@@ -5,13 +5,21 @@
 		'use strict'
         if (this === undefined) return
 
-        this.name = name
+        if(!name) {
+            throw Error("Task need a required parameter: name")
+        }
+        let _name = name
+        
         this.completed = completed || false
         this.createdAt = createdAt || Date.now()
         this.updatedAt = updatedAt || null
-        
+        this.getName = () => _name
+        this.setName = function(newName) {
+            _name = newName
+            this.updatedAt = Date.now()
+        }
 	}
-
+    
     function toggleDone(currentLiIndex) {
         arrInstancesTasks[currentLiIndex].completed = !arrInstancesTasks[currentLiIndex].completed
     }
@@ -36,11 +44,10 @@
 		}
 	]
  
-	const arrInstancesTasks = [
-        
-    ]
-
-    
+	const arrInstancesTasks = arrTasks.map( task => {
+        const {name, completed, createdAt, updatedAt} = task
+        return new Task(name, completed, createdAt, updatedAt)
+    })
 
 
     //ARMAZENAR O DOM EM VARIAVEIS
@@ -68,7 +75,7 @@
         li.appendChild(checkButton)
 
         p.className = "task-name"
-        p.textContent = obj.name
+        p.textContent = obj.getName()
         li.appendChild(p)
 
         editButton.className = "fas fa-edit"
@@ -81,7 +88,7 @@
         const inputEdit = document.createElement("input")
         inputEdit.setAttribute("type", "text")
         inputEdit.className = "editInput"
-        inputEdit.value = obj.name
+        inputEdit.value = obj.getName()
 
         containerEdit.appendChild(inputEdit)
         const containerEditButton = document.createElement("button")
@@ -113,15 +120,14 @@
         });
     }
 
-    function addTask(task) {
-        arrInstancesTasks.push(new Task(task))
+    function addTask(taskName) {
+        arrInstancesTasks.push(new Task(taskName))
         renderTasks()
 
     }
 
     function clickedUl(e) {
         const dataAction = e.target.getAttribute("data-action")
-        console.log(e.target)
         if (!dataAction) return
 
         let currentLi = e.target
@@ -149,12 +155,12 @@
             },
             containerEditButton: function () {
                 const val = currentLi.querySelector(".editInput").value
-                arrInstancesTasks[currentLiIndex].name = val
+                arrInstancesTasks[currentLiIndex].setName(val)
                 renderTasks()
             },
             containerCancelButton: function () {
                 currentLi.querySelector(".editContainer").removeAttribute("style")
-                currentLi.querySelector(".editInput").value = arrInstancesTasks[currentLiIndex].name
+                currentLi.querySelector(".editInput").value = arrInstancesTasks[currentLiIndex].getName()
             },
             checkButton: function () {
                 toggleDone(currentLiIndex)
@@ -170,7 +176,6 @@
 
     todoAddForm.addEventListener("submit", function (e) {
         e.preventDefault()
-        console.log(itemInput.value)
         addTask(itemInput.value)
         renderTasks()
 
