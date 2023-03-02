@@ -1,16 +1,20 @@
-function Task(name,complet) {
-    'use strict'
-    if (this === undefined) return
+(function(){
+    function Task(name, upDateAt, createdAt, completed) {
+        'use strict'
+        if (this === undefined) return
 
-    this.name = name
-    this.completed = complet
-    this.upDateAt = new Date()
-}
-
-let task1 = new Task("task nova", false)
-
-let task2 = new Task("task mais que nova", true)
-
-
-
+        let _name = name
+        this.upDateAt = upDateAt || null
+        this.createdAt = createdAt || Date.now()
+        this.completed = completed || false
+        this.getName = function() {
+            let name = _name
+            return name
+        }
+        this.setName = function(newName) {
+            _name = newName
+        }
+    }
+    let task1 = new Task("nome da task")
+})()
 
